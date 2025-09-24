@@ -67,8 +67,10 @@ class IfcMeasure(Measurement):
         # Convenient reference to the hardware used in the measurement
         self.camera = self.app.hardware['IDS']
         try:
-            self.camera.settings['connected'] = True
+            if not self.camera.settings['connected']:
+                self.camera.settings['connected'] = True
             self.camera.camera_device.set_bit_depth(16) # try to set maximum bit depth. On IDS cameras if 16 is not available, the device will try to set a smaller one
+            self.camera.camera_device.set_full_chip()
         except Exception:
             print('Camera not found. Index Error')
 
@@ -218,9 +220,9 @@ class IfcMeasure(Measurement):
         self.camera.camera_device.start_acquisition()   
 
         while not self.interrupt_measurement_called:
+              
             
             img = self.camera.camera_device.get_frame()
-                
             self.im.image[0,...] = img
             
             if self.settings['detect']:
@@ -259,11 +261,11 @@ class IfcMeasure(Measurement):
         while not self.interrupt_measurement_called:
             
             img = self.camera.camera_device.get_frame()
-            self.im.image[0,...] = img
+            grabbing, delivered, lost, in_cnt, out_cnt, frame_id = self.camera.camera_device.get_buffer_count() 
             self.detect_objects()
-            im = self.im
+            self.im.image[0,...] = img
             znum = 1 # TODO: self.settings['frame_num'] # change to znum when z-stacks are implemented
-            
+            im = self.im.copy()
             roisize = self.settings['roi_size']
         
             for roi_idx in range(len(im.cx)):
@@ -323,8 +325,9 @@ class IfcMeasure(Measurement):
         while self.frame_index < znum:
             self.channel_index = 0 
             while self.channel_index < channel_num:
-                
                 img = self.camera.camera_device.get_frame() 
+                self.camera.camera_device.get_buffer_count()  
+                self.im.image[0,...] = img
                 
                 images_h5[self.channel_index][self.frame_index,:,:] = img
                 self.h5file.flush() # introduces a slight time delay but assures that images are stored continuosly 
