@@ -37,13 +37,17 @@ class ImageManager:
         if norm_factor is None:
             norm_factor = (2**(bitdepth)-1) /255
         image8bit = (im/norm_factor).astype('uint8')
-        if self.debug:
-            self.image8bit = image8bit
+        
+
         _ret,thresh_pre = cv2.threshold(image8bit,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
         # ret is the threshold that was used, thresh is the thresholded image.     
         kernel  = np.ones((3,3),np.uint8)
         thresh = cv2.morphologyEx(thresh_pre,cv2.MORPH_OPEN, kernel, iterations = 2)
         # morphological opening (removes noise)
+
+        if self.debug:
+            self.image8bit = thresh
+
         cnts, _hierarchy = cv2.findContours(thresh,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
         cx = []
         cy = []            

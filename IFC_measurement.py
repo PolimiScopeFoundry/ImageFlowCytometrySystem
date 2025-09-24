@@ -62,7 +62,7 @@ class IfcMeasure(Measurement):
         self.settings.New('rotate', dtype=bool, initial=True)
         self.settings.New('rois_per_file', dtype=int, initial=100, vmin=0, vmax=1000000)
         
-        self.settings.New('normalization',dtype=int,initial=256)
+        self.settings.New('normalization',dtype=int,initial=256, vmin=1)
         
         # Convenient reference to the hardware used in the measurement
         self.camera = self.app.hardware['IDS']
@@ -204,7 +204,7 @@ class IfcMeasure(Measurement):
                         self.settings.roi_size.val,
                         Nchannels=1, #TODO change when multiple color are aquired
                         dtype=img.dtype,
-                        debug = False
+                        debug = self.camera.debug_mode.val
                         )
         self.im.image[0,...] = img
         self.camera.camera_device.stop_acquisition()  
