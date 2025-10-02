@@ -40,7 +40,7 @@ if __name__ == '__main__':
     app = camera_app(sys.argv)
     
     path = os.path.dirname(os.path.realpath(__file__))
-    new_path = os.path.join(path, 'Settings', 'Settings.ini')
+    new_path = os.path.join(path, 'Settings', 'settings.ini')
     print(new_path)
 
     # app.settings_load_ini(new_path)
