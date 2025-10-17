@@ -45,6 +45,8 @@ class IfcMeasure(Measurement):
         self.settings.New('objects_in_frame', dtype=int, initial=0, ro=True)
         
         self.settings.New('frame_num', dtype=int, initial=20, vmin=1)
+        self.settings.New(name='buffer_size',initial= 64, spinbox_step = 1, vmin=1,
+                                           dtype=int, ro=False) 
         
         self.settings.New('xsampling', dtype=float, unit='um', initial=0.5)
         self.settings.New('ysampling', dtype=float, unit='um', initial=0.5)
@@ -217,12 +219,13 @@ class IfcMeasure(Measurement):
 
         self.camera.camera_device.set_acquisition_mode("Continuous")
         self.camera.camera_device.set_stream_mode("NewestOnly") 
-        self.camera.camera_device.start_acquisition()   
+        self.camera.camera_device.start_acquisition(buffersize=self.settings.buffer_size.val)  
 
         while not self.interrupt_measurement_called:
               
             
             img = self.camera.camera_device.get_frame()
+
             self.im.image[0,...] = img
             
             if self.settings['detect']:
@@ -252,7 +255,7 @@ class IfcMeasure(Measurement):
         self.camera.camera_device.stop_acquisition() 
         self.camera.camera_device.set_acquisition_mode("Continuous")
         self.camera.camera_device.set_stream_mode("OldestFirst") 
-        self.camera.camera_device.start_acquisition()  
+        self.camera.camera_device.start_acquisition(buffersize=self.settings.buffer_size.val)
 
         time_index=0
 
