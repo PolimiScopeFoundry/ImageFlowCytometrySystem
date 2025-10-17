@@ -350,7 +350,19 @@ class IfcMeasure(Measurement):
 
         if not os.path.isdir(self.app.settings['save_dir']):
             os.makedirs(self.app.settings['save_dir'])
-        self.h5file = h5_io.h5_base_file(app=self.app, measurement=self)
+
+
+        timestamp = time.strftime("%y%m%d_%H%M%S", time.localtime())
+        sample = self.app.settings['sample']
+        #sample_name = f'{timestamp}_{self.name}_{sample}.h5'
+        if sample == '':
+            sample_name = timestamp
+        else:
+            sample_name = '_'.join([timestamp, sample])
+        fname = os.path.join(self.app.settings['save_dir'], sample_name + '.h5')
+        
+        self.h5file = h5_io.h5_base_file(app=self.app, measurement=self, fname = fname)
+
         self.h5_group = h5_io.h5_create_measurement_group(measurement=self, h5group=self.h5file)
         h5_dataset_list = [] # image_h5 is a of h5 datasets
         return h5_dataset_list
