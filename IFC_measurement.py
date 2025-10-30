@@ -64,7 +64,7 @@ class IfcMeasure(Measurement):
         self.settings.New('rotate', dtype=bool, initial=True)
         self.settings.New('rois_per_file', dtype=int, initial=100, vmin=0, vmax=1000000)
         
-        self.settings.New('normalization',dtype=int,initial=256, vmin=1)
+        self.settings.New('normalization',dtype=int,initial=16, vmin=1)
         
         # Convenient reference to the hardware used in the measurement
         self.camera = self.app.hardware['IDS']
@@ -140,7 +140,7 @@ class IfcMeasure(Measurement):
         im = self.im.copy()
         img = im.image[0,...]
         if hasattr(self.im,"image8bit") and self.settings['detect']:
-            img = self.im.image8bit
+            img = self.im.image8bit #TODO check if contrast is shown properly
 
         if self.settings.saving_type.val == 'None':
             self.screen_width = self.ui.screen().size().width()
