@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-from image_data import ImageManager
+from image_data_dvp import ImageManager
 from find_h5_dataset import  get_h5_datasets  
 
 # load dataset from h5
