@@ -1,0 +1,13 @@
+2025-11-09T19:56:02|CRITICAL|root|Unhandled exception: Traceback (most recent call last):
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\ImageFlowCytometry_System\IFC_app.py", line 40, in <module>
+    app = camera_app(sys.argv)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ScopeFoundry\base_app\base_microscope_app.py", line 88, in __init__
+    self.setup()
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\ImageFlowCytometry_System\IFC_app.py", line 27, in setup
+    from camera_hw import IdsHW
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\IDS_ScopeFoundry\camera_hw.py", line 8, in <module>
+    from ids_library import Camera, BitDepthChoices
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\IDS_ScopeFoundry\ids_library.py", line 1, in <module>
+    from ids_peak import ids_peak
+ModuleNotFoundError: No module named 'ids_peak'
+

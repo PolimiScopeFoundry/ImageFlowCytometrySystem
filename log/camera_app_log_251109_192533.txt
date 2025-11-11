@@ -1,0 +1,14 @@
+2025-11-09T19:25:33|CRITICAL|root|Unhandled exception: Traceback (most recent call last):
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\ImageFlowCytometry_System\IFC_app.py", line 40, in <module>
+    app = camera_app(sys.argv)
+  File "C:\Users\YSpol\anaconda3\envs\scopefoundry\Lib\site-packages\ScopeFoundry\base_app\base_microscope_app.py", line 88, in __init__
+    self.setup()
+    ~~~~~~~~~~^^
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\ImageFlowCytometry_System\IFC_app.py", line 32, in setup
+    from IFC_measurement import IfcMeasure
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\ImageFlowCytometry_System\IFC_measurement.py", line 14, in <module>
+    from image_data import ImageManager
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\ImageFlowCytometry_System\image_data.py", line 2, in <module>
+    import cv2
+ModuleNotFoundError: No module named 'cv2'
+

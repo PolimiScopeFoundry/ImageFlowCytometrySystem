@@ -1,0 +1,31 @@
+2025-11-09T19:57:19|CRITICAL|root|Unhandled exception: Traceback (most recent call last):
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\ImageFlowCytometry_System\IFC_app.py", line 40, in <module>
+    app = camera_app(sys.argv)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ScopeFoundry\base_app\base_microscope_app.py", line 88, in __init__
+    self.setup()
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\ImageFlowCytometry_System\IFC_app.py", line 33, in setup
+    self.add_measurement(IfcMeasure(self))
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ScopeFoundry\measurement.py", line 129, in __init__
+    self.setup()
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\ImageFlowCytometry_System\IFC_measurement.py", line 34, in setup
+    self.ui = load_qt_ui_file(self.ui_filename)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ScopeFoundry\helper_funcs.py", line 91, in load_qt_ui_file
+    ui = uic.loadUi(ui_filename)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\PyQt5\uic\__init__.py", line 241, in loadUi
+    return DynamicUILoader(package).loadUi(uifile, baseinstance, resource_suffix)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\PyQt5\uic\Loader\loader.py", line 66, in loadUi
+    return self.parse(filename, resource_suffix)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\PyQt5\uic\uiparser.py", line 1037, in parse
+    actor(elem)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\PyQt5\uic\uiparser.py", line 826, in createUserInterface
+    self.wprops.setProperties(self.toplevelWidget, elem)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\PyQt5\uic\properties.py", line 415, in setProperties
+    prop_value = self.convert(prop, widget)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\PyQt5\uic\properties.py", line 378, in convert
+    return func(prop[0], **args)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\PyQt5\uic\properties.py", line 129, in _enum
+    return self._pyEnumMember(prop.text)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\PyQt5\uic\properties.py", line 111, in _pyEnumMember
+    return getattr(QtCore.Qt, membername)
+AttributeError: type object 'Qt' has no attribute 'Qt::WindowModality::NonModal'
+

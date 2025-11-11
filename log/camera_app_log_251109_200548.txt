@@ -1,0 +1,28 @@
+2025-11-09T20:05:50|CRITICAL|root|Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ScopeFoundry\hardware.py", line 113, in enable_connection
+    raise err
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ScopeFoundry\hardware.py", line 101, in enable_connection
+    self.connect()
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\IDS_ScopeFoundry\camera_hw.py", line 52, in connect
+    self.camera_device = Camera(debug=self.settings['debug_mode'])
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\IDS_ScopeFoundry\ids_library.py", line 19, in __init__
+    self.device = device_manager.Devices()[cam_num].OpenDevice(ids_peak.DeviceAccessType_Control)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ids_peak\ids_peak.py", line 7942, in __getitem__
+    return _ids_peak_python_interface.VectorDeviceDescriptor___getitem__(self, *args)
+IndexError: index out of range
+
+2025-11-09T20:05:54|CRITICAL|root|Unhandled exception: Traceback (most recent call last):
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ScopeFoundry\hardware.py", line 113, in enable_connection
+    raise err
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ScopeFoundry\hardware.py", line 101, in enable_connection
+    self.connect()
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\IDS_ScopeFoundry\camera_hw.py", line 52, in connect
+    self.camera_device = Camera(debug=self.settings['debug_mode'])
+  File "c:\Users\YSpol\OneDrive - Politecnico di Milano\Documents\POLIMI\NEXTSCREEN\Lightsheet Setup\Python\IDS_ScopeFoundry\ids_library.py", line 19, in __init__
+    self.device = device_manager.Devices()[cam_num].OpenDevice(ids_peak.DeviceAccessType_Control)
+  File "C:\Users\YSpol\anaconda3\envs\Scopefoundry1\lib\site-packages\ids_peak\ids_peak.py", line 7942, in __getitem__
+    return _ids_peak_python_interface.VectorDeviceDescriptor___getitem__(self, *args)
+IndexError: index out of range
+
+2025-11-09T20:06:08|INFO|camera_app|on_close
+2025-11-09T20:06:08|INFO|camera_app|disconnecting IDS
