@@ -5,13 +5,13 @@ from image_data_dvp import ImageManager
 from find_h5_dataset import get_h5_datasets
 
 # load dataset from h5
-filename = "C:\\Users\\YSpol\\Desktop\\data\\EVs_stack.h5"
+filename = "C:\\Users\\YSpol\\Desktop\\251017_163457_IFC_measurement.h5"
 data = get_h5_datasets(filename, dataset_index=0)
 data = np.array(data)
 data = np.squeeze(data)
 
 # selecting a specific frame from the dataset
-frame_index = 11   # 0 for first frame, 49 for the 50th, etc.
+frame_index = 37   # 0 for first frame, 49 for the 50th, etc.
 
 if data.ndim == 3:
     num_frames = data.shape[0]
@@ -30,7 +30,7 @@ H, W = image16bit.shape
 im = ImageManager(dim_h=W, dim_v=H, roisize=64, Nchannels=1, dtype=np.uint16)
 im.image[0, ...] = image16bit 
 
-im.find_object(channel=0, min_object_area=10, max_object_area=200, norm_factor=8)
+im.find_object(channel=0, min_object_area=10, max_object_area=200, norm_factor=4)
 #print("Centroids X:", im.cx)
 #print("Centroids Y:", im.cy)
 #print("Num contours:", len(im.contours))
