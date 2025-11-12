@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import cv2
 
@@ -28,6 +29,7 @@ class ImageManager:
         self.cx = []             
         self.cy = []
         
+    
     def find_object(self, channel=0, min_object_area=100, max_object_area=1000, bitdepth=12, norm_factor=None):    # ch: selected channel       
         """ Input: 
              channel: channel to use to create the 8 bit image to process
@@ -42,7 +44,7 @@ class ImageManager:
         _ret,thresh_pre = cv2.threshold(image8bit,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
         # ret is the threshold that was used, thresh is the thresholded image.     
         kernel  = np.ones((3,3),np.uint8)
-        thresh = cv2.morphologyEx(thresh_pre,cv2.MORPH_OPEN, kernel, iterations = 2)
+        thresh = cv2.morphologyEx(thresh_pre,cv2.MORPH_OPEN, kernel, iterations = 1)
         # morphological opening (removes noise)
 
         if self.debug:
@@ -75,6 +77,7 @@ class ImageManager:
         self.cy = cy 
         self.contours = contours  
 
+    
     def copy(self):
         """
         Returns a deep copy of the ImageManager instance.

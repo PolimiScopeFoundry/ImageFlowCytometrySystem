@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 from image_data_dvp import ImageManager
 from find_h5_dataset import get_h5_datasets
+import time
 
 # load dataset from h5
 filename = "C:\\Users\\YSpol\\Desktop\\251017_163457_IFC_measurement.h5"
@@ -30,16 +31,21 @@ H, W = image16bit.shape
 im = ImageManager(dim_h=W, dim_v=H, roisize=64, Nchannels=1, dtype=np.uint16)
 im.image[0, ...] = image16bit 
 
-im.find_object(channel=0, min_object_area=10, max_object_area=200, norm_factor=4)
+t0 = time.time()
+
+im.find_object(channel=0, min_object_area=10, max_object_area=2000, norm_factor=4)
 #print("Centroids X:", im.cx)
 #print("Centroids Y:", im.cy)
 #print("Num contours:", len(im.contours))
 
 
-image8bit = (image16bit / 16).astype('uint8') 
+print("Processing time (ms):", (time.time() - t0)*1000)
+
+contrast=3
+image8bit = (image16bit*contrast).astype('uint8') 
 annotated_image = im.draw_contours_on_image(image8bit)
 
-# cv2.imshow("Input Image (8-bit view)", image8bit)
+cv2.imshow("Input Image (8-bit view)", image8bit)
 cv2.imshow("Annotated Image", annotated_image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
